@@ -1,0 +1,10 @@
+gymnasium[atari]
+ale-py
+torch
+numpy
+opencv-python
+mlflow>=2.8.0
+matplotlib
+jupyter
+ipywidgets
+plotly 

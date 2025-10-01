@@ -80,8 +80,11 @@ def log_training_step(loss, episode, step_count):
     wandb.log({"loss": loss, "step": episode * 10000 + step_count})
 
 
-def log_episode_metrics(episode_reward, mean_reward, epsilon, buffer_size, episode_length, episode):
+def log_episode_metrics(episode_reward, mean_reward, epsilon, buffer_size, episode_length, episode, step=None):
     """Log episode metrics to both MLflow and wandb with organized structure"""
+    # Use step parameter if provided, otherwise use episode for backward compatibility
+    log_step = step if step is not None else episode
+
     # Organized wandb logging with namespaces
     wandb_metrics = {
         "training/episode_reward": episode_reward,
@@ -101,7 +104,7 @@ def log_episode_metrics(episode_reward, mean_reward, epsilon, buffer_size, episo
         "episode_length": episode_length
     }, step=episode)
 
-    wandb.log(wandb_metrics, step=episode)
+    wandb.log(wandb_metrics, step=log_step)
 
 
 def log_10_episode_average(avg_reward, episode):

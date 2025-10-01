@@ -1,0 +1,7 @@
+src/legacy/
+artifacts/
+.env
+__pycache__/
+mlflow/
+wandb/
+mlruns/
