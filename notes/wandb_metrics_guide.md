@@ -161,9 +161,9 @@ This guide provides a comprehensive description of all metrics logged to Weights
 - **Description**: Negative entropy of policy distribution
 - **Typical Range**: Negative values, magnitude depends on action space size
 - **Good Behavior**:
-  - Starts high (large entropy = more exploration)
-  - Gradually becomes more negative (decreasing entropy = more deterministic)
-  - Stabilizes at moderate negative value (balanced exploration/exploitation)
+  - Starts with a large negative value (high entropy = more exploration)
+  - Gradually becomes less negative, closer to zero (decreasing entropy = more deterministic)
+  - Stabilizes at a moderate negative value (balanced exploration/exploitation)
 - **Bad Behavior**:
   - Too negative too fast (premature convergence to deterministic policy)
   - Stays near zero (policy not becoming more decisive)
@@ -319,12 +319,12 @@ This guide provides a comprehensive description of all metrics logged to Weights
 
 ### Exploration vs. Exploitation Trade-off
 
-**High Entropy (less negative entropy_loss)**
+**High Entropy (more negative entropy_loss)**
 - **Pros**: More exploration, robust to local optima, better generalization
 - **Cons**: Slower convergence, lower peak performance, noisy behavior
 - **When to use**: Early training, complex environments, when stuck in local optimum
 
-**Low Entropy (more negative entropy_loss)**
+**Low Entropy (less negative entropy_loss)**
 - **Pros**: Faster convergence, higher peak performance, consistent behavior
 - **Cons**: Risk of premature convergence, brittle to changes, local optima
 - **When to use**: Fine-tuning, near-optimal policy, simple environments
